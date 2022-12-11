@@ -1,0 +1,95 @@
+<nz-header>
+  <!--<img src="../assets/bfi_2.jpg">-->
+  <div class="app-header">
+    <span>
+
+      <ul nz-menu nzMode="horizontal" nzTheme="dark">
+        <li nz-submenu nzTitle="Clients" nzIcon="">
+          <ul>
+            <ul>
+              <li nz-menu-item nzMatchRouter nzIcon="bank">
+                <a routerLink="/addCompteClient">Création client</a>
+              </li>
+              <li nz-menu-item nzMatchRouter nzIcon="bank">
+                <a routerLink="/clientList">Liste client</a>
+              </li>
+            </ul>
+          </ul>
+        </li>
+        <li nz-submenu nzTitle="Comptes" nzIcon="">
+          <ul>
+            <ul>
+              <li nz-menu-item nzMatchRouter nzIcon="bank">
+                <a routerLink="/listCompte">Liste des comptes</a>
+              </li>
+              <li nz-menu-item nzMatchRouter nzIcon="bank">
+                <a routerLink="/compteClient">Création compte</a>
+              </li>
+            </ul>
+          </ul>
+        </li>
+
+
+        <li nz-menu-item nzMatchRouter nzIcon="bank">
+          <a routerLink="/creditList">Crédit</a>
+        </li>
+        <li nz-menu-item nzMatchRouter nzIcon="bank">
+          <a routerLink="/demandeCredit">Demande de crédit</a>
+        </li>
+
+        <li nz-menu-item nzMatchRouter nzIcon="bank">
+          <a routerLink="/carte">Cartes</a>
+        </li>
+
+        <li nz-menu-item nzMatchRouter nzIcon="bank">
+          <a routerLink="/Cheque">Chèques</a>
+        </li>
+
+        <li nz-menu-item nzMatchRouter nzIcon="bank">
+          <a routerLink="/rdv">Rendez-vous</a>
+        </li>
+
+        <li nz-menu-item nzMatchRouter nzIcon="bank">
+          <a routerLink="/reclamation">Réclamation</a>
+        </li>
+
+        <li nz-menu-item nzMatchRouter nzIcon="bank">
+          <a routerLink="/suggestion">Suggestion</a>
+        </li>
+        <li nz-menu-item nzMatchRouter nzIcon="logout">
+          <a routerLink="/logout">Déconnexion</a>
+        </li>
+
+        <!-- <li class="logout_button">
+            <button nz-button nzType="primary" (click)="logout()" [nzLoading]="isLoadingTwo">
+              <i nz-icon nzType="poweroff"></i>
+              Logout
+            </button>
+            
+          </li> -->
+
+        <!--
+          <span class="navbar-nav ml-auto">
+            <form class="d-flex ms-auto order-5">
+              <nz-button-group>
+                <button nz-button (click)="log()">User</button>
+                <button nz-button nz-dropdown [nzDropdownMenu]="menu2" nzPlacement="bottomRight">
+                  <i nz-icon nzType="user"></i>
+                </button>
+              </nz-button-group>
+            </form>
+
+            <nz-dropdown-menu #menu2="nzDropdownMenu">
+              <ul nz-menu>
+                <li nz-menu-item>Mon Profil</li>
+                <li nz-menu-item (click)="logout()">Se déconnecter</li>
+              </ul>
+            </nz-dropdown-menu>
+
+          </span> -->
+
+
+      </ul>
+    </span>
+  </div>
+</nz-header>

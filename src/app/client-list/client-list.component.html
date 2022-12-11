@@ -1,0 +1,45 @@
+<div class="d-flex page__box p-3 mt-3">
+  <h1>Liste des clients</h1>
+</div>
+<nz-table #fixedTable [nzData]="listClients" [nzScroll]="{ x : 'max-content' }" >
+  <thead>
+    <tr>
+      <th nzLeft>Nom</th>
+      <th nzLeft>Prénom</th>
+      <th nzLeft>Nom complet</th>
+      <th>Sexe</th>
+      <th>Age</th>
+      <th>Date de création</th>
+      <th>Etat civil</th>
+      <th>Nom père</th>
+      <th>Nom mère</th>
+      <th>Date de naissance</th>
+      <th>Lieu de naissance</th>
+      <th>Nationalité</th>
+      <th>Résidence</th>
+      <th>Mobile</th>
+      <th nzRight><a>Comptes</a></th>
+
+
+    </tr>
+  </thead>
+  <tbody >
+    <tr *ngFor="let c of listClients">
+      <td nzLeft >{{c.nom}}</td>
+      <td nzLeft>{{c.prenom}}</td>
+      <td nzLeft>{{c.nomComplet}}</td>
+      <td>{{c.sexe}}</td>
+      <td>{{c.age}}</td>
+      <td>{{c.dateDeCreation}}</td>
+      <td>{{c.etatCivil}}</td>
+      <td>{{c.nomPere}}</td>
+      <td>{{c.nomMere}}</td>
+      <td>{{c.dateDeNaissance | date: 'dd/MM/yyyy'}}</td>
+      <td>{{c.paysNaissance}}</td>
+      <td>{{c.paysNationalite}}</td>
+      <td>{{c.paysResidence}}</td>
+      <td>{{c.mobile}}</td>
+      <td></td>
+    </tr>
+  </tbody>
+</nz-table>

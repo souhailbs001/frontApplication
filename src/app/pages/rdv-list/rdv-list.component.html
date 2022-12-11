@@ -1,0 +1,97 @@
+<div class="container-fluid page">
+  <div class="d-flex page__box p-3 mt-2">
+    <h1>Liste des rendez-vous</h1>
+  </div>
+  <div class="  shadow p-3 position-relative">
+    <div class=" ">
+      <div class="col-md-12" style="margin-bottom: 10px;">
+        Items per Page:
+        <select class="custom-select" style="width: auto" (change)="handlePageSizeChange($event)">
+          <option *ngFor="let size of pageSizes" [ngValue]="size">
+            {{ size }}
+          </option>
+        </select>
+      </div>
+      <table class="table table-striped" style="width: 100%;overflow-y: scroll;">
+
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Client</th>
+            <th scope="col">Objet</th>
+            <th scope="col">Date</th>
+            <th scope="col">Heure de début</th>
+            <th scope="col">Heure de fin</th>
+            <th scope="col">Commentaire</th>
+            <th scope="col">Documents attachés</th>
+            <th scope="col">Statut</th>
+            <th scope="col">Action</th>
+
+          </tr>
+        </thead>
+        <tbody *ngFor="let rdv of listRdv  | paginate: { itemsPerPage: pageSize,
+              currentPage: page,
+              totalItems: count }">
+          <tr>
+            <td>BE57473601878261</td>
+            <td>{{rdv.objet}}</td>
+            <td>{{rdv.dateRdv | date: 'dd/MM/yyyy'}}</td>
+            <td>{{rdv.heureDebut}}</td>
+            <td>{{rdv.heureFin }}</td>
+            <td>{{rdv.commentaire}}</td>
+            <td>
+              <a type="submit" (click)="redirectToDownloadPage()" hover>
+                <fa-icon title="attachment" [icon]="faPaperclip"></fa-icon>
+              </a>
+            </td>
+            <!-- <td><button nz-button nzType="default" [nzSize]="size" nzShape="circle"><i nz-icon nzType="download"></i></button></td>
+                 -->
+            <td>
+              <span class="badge badge-pill badge-warning"*ngIf="rdv.statutRdv === 'En_attente'">{{rdv.statutRdv}}</span>
+              <span class="badge badge-pill badge-danger" *ngIf="rdv.statutRdv === 'Refusé'">{{rdv.statutRdv}}</span>
+              <span class="badge badge-pill badge-success" *ngIf="rdv.statutRdv === 'Validé'">{{rdv.statutRdv}}</span>
+            </td>
+
+            <td class="btn-group">
+              <button type="submit" class="btn btn-outline-success" (click)="accept(rdv)">
+                <fa-icon [icon]="faCalendarCheck"></fa-icon>
+              </button>
+              <button type="submit" class="btn btn-outline-danger" (click)="save(rdv)">
+                <fa-icon [icon]="faBan"></fa-icon>
+              </button>
+            </td>
+
+
+
+          </tr>
+
+        </tbody>
+      </table>
+      <div class="d-flex justify-content-between p-2">
+        <pagination-controls previousLabel="Prev" nextLabel="Next" [responsive]=true [autoHide]=true
+          screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page" [directionLinks]=true
+          (pageBoundsCorrection)="handlePageChange($event)" (pageChange)="handlePageChange($event)">
+        </pagination-controls>
+      </div>
+
+
+    </div>
+  </div>
+  <!-- spinnner element is 
+    defined with id loading -->
+  <div class="d-flex justify-content-center">
+    <div *ngIf="!loading" class="spinner-border" role="status">
+      <span class="sr-only" id="loading"></span>
+    </div>
+  </div>
+  <h2>{{ dataDisplay }}</h2>
+
+  <div *ngIf="filenames?.length > 0" class="js-upload-finished">
+                <h3>Processed files</h3>
+                <div *ngFor="let filename of filenames" class="list-group">
+                    <a (click)="onDownloadFile(filename)" class="list-group-item list-group-item-success"
+                        style="cursor: pointer;">
+                        {{ filename }}
+                        <a class="alert-success float-right">Download</a>
+                    </a><br>
+                </div>
+            </div>

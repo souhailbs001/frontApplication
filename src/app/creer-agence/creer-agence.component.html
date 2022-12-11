@@ -1,0 +1,63 @@
+<div class="d-flex page__box p-3 mt-3">
+    <h1>Creer agence</h1>
+</div>
+
+<form #agenceForm="ngForm" nz-form [formGroup]="validateForm" (ngSubmit)="agenceForm" class="ant-advanced-search-form">
+    <div nz-row [nzGutter]="24">
+        <div nz-col [nzSpan]="8">
+            <nz-form-item>
+                <nz-form-label nzFor="codeInterne" nzRequired>
+                    <span>code Interne</span>
+                </nz-form-label>
+                <nz-form-control nzErrorTip="Entrez votre nom !">
+                    <input type="text" nz-input id="codeInterne" formControlName="codeInterne" name="codeInterne"
+                        [(ngModel)]="agence.codeInterne" />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+
+        <div nz-col [nzSpan]="8">
+            <nz-form-item>
+                <nz-form-label nzFor="libcou" nzRequired>
+                    <span>libellé court</span>
+                </nz-form-label>
+                <nz-form-control nzErrorTip="Entrez votre prénom !">
+                    <input nz-input id="libcou" formControlName="libcou" [(ngModel)]="agence.libcou" />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="8">
+            <nz-form-item>
+                <nz-form-label nzRequired nzFor="liblon">libellé long</nz-form-label>
+                <nz-form-control nzErrorTip="The input is not valid E-mail!">
+                    <input nz-input formControlName="liblon" id="liblon" [(ngModel)]="agence.liblon" />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+
+
+    <div nz-row [nzGutter]="24">
+
+        <div nz-col [nzSpan]="8">
+            <nz-form-item>
+                <nz-form-label nzRequired>Banque</nz-form-label>
+                <nz-form-control>
+                    <nz-select name="select-validate" [ngModelOptions]="{standalone: true}">
+                        <nz-option nzValue="nomBanque" nzLabel="nom de la banque"></nz-option>
+                    </nz-select>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+
+    <div nz-row>
+        <div nz-col [nzSpan]="24" class="search-area">
+            <button nz-button [nzType]="'primary'" (click)="onSaveAgence()">Confirmer</button>
+            <button nz-button (click)="resetForm()">réinitialiser</button>
+
+        </div>
+    </div>
+
+
+</form>

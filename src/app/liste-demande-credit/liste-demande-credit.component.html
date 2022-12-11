@@ -1,0 +1,50 @@
+<div class="d-flex page__box p-3 mt-3">
+  <h1>Liste des demande de crédit</h1>
+</div>
+<nz-table #fixedTable [nzData]="listDemandeCredits"
+[nzShowSizeChanger]="false"
+[nzHideOnSinglePage]="false"
+
+[nzPageSizeOptions]="[10, 25, 50, 75, 100]"
+>
+    <thead>
+      <tr>
+        <th>Compte</th>
+        <th>Ref.Crédit</th>
+        <th>Emprunt</th>
+        <th>durée</th>
+        <th>Statut</th>
+        <th>Action</th>
+
+      </tr>
+    </thead>
+    <tbody >
+      <tr *ngFor="let demandeCredit of listDemandeCredits">
+        <td>19856347852451247800</td>
+        <td>{{demandeCredit.reference}}</td>
+        <td>{{numberWithSpaces(demandeCredit.emprunt)}}</td>
+        <td>{{demandeCredit.duree }}</td>
+        <td>
+          <span *ngIf="demandeCredit.statut === 'Being_Processed'"><nz-badge  nzStatus="processing" nzText="En attente"></nz-badge></span>
+          <span *ngIf="demandeCredit.statut === 'Validated'"><nz-badge nzStatus="success" nzText="Validé"></nz-badge></span>
+          <nz-badge *ngIf="demandeCredit.statut === 'Refused'" nzStatus="error" nzText="Refusé"></nz-badge>
+        </td>
+
+        <td class="btn-group">
+          <button *ngIf="demandeCredit.statut !== 'Validated'" type="submit" class="btn btn-outline-success" (click)="accept(demandeCredit)">
+            <fa-icon [icon]="faCalendarCheck"></fa-icon>
+          </button>
+          <button  *ngIf="demandeCredit.statut !== 'Refused'"type="submit" class="btn btn-outline-danger" (click)="refuse(demandeCredit)">
+            <fa-icon [icon]="faBan"></fa-icon>
+          </button>
+        </td>
+
+   
+        <!-- <td>
+          <a>Action 一 refuse </a>
+          <nz-divider nzType="vertical"></nz-divider>
+          <a>approve</a>
+        </td> -->
+      </tr>
+    </tbody>
+  </nz-table>

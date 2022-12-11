@@ -1,0 +1,16 @@
+h1{
+    font-size: xx-large;
+    font-family: 'Times New Roman', Times, serif
+}
+
+#block_container
+{
+    text-align:left;
+    margin-bottom: 10px;
+
+}
+#bloc1, #bloc2
+{
+    display:inline;
+    margin: 20px;
+}

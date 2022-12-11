@@ -1,0 +1,28 @@
+
+
+ <div class="body">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <form #loginForm="ngForm" onsubmit="event.preventDefault()" (ngSubmit)="login(loginForm)" class="box">
+            <img src="../assets/bfi_logo-removebg-preview.png" height="120px" width="140px">
+            <p class="text-muted"> </p>
+            <input type="text" name="userName" placeholder="Username" ngModel>
+            <input type="password" name="userPassword" placeholder="Password" ngModel>
+            <a class="forgot text-muted" href="#">Forgot password?</a>
+
+            <input type="submit" name="" value="Login" href="#">
+
+            <div class="col-md-12">
+              <ul class="social-network social-circle">
+                <li><a href="#" title="bfi"><i class=""></i></a></li>
+              </ul>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
+<div class="bg"></div>

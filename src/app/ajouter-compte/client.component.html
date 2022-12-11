@@ -1,0 +1,25 @@
+<div class="d-flex page__box p-3 mt-3">
+  <h4 nz-typography>Créer un compte bancaire</h4>
+</div>
+
+<form #accountForm="ngForm" (ngSubmit)="saveAccount(accountForm.value)">
+  <div class="form">
+    <div class="line1">
+      <!--<input name="client" class="inputForm" nz-input placeholder="Client"  required />-->
+      <nz-input-group nzCompact>
+        <nz-select  name="client" class="deviseDropDown" Placeholder="Client"[(ngModel)]="this.client">
+          <nz-option *ngFor="let c of listClients" [nzLabel]=c.nomComplet [nzValue]=c.id></nz-option>
+        </nz-select>
+      </nz-input-group>
+    </div>
+    <nz-input-group nzCompact placeholder="Devise">
+      <nz-select name="devise" class="deviseDropDown" placeholder="Devise" >
+        <nz-option *ngFor="let d of currencies" placeholder="Devise" [nzLabel]=d.cc [nzValue]=d.cc></nz-option>
+      </nz-select>
+    </nz-input-group>
+
+  </div>
+  <label name="colure" class="checkboxCloture" nz-checkbox [(ngModel)]="checked">Cloturé</label>
+  <button type="submit" name="saveCompte" class="saveButton" nz-button nzType="primary"
+  >Enregistrer</button>
+</form>

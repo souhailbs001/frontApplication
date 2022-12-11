@@ -1,0 +1,77 @@
+<div class="d-flex page__box p-3 mt-3">
+    <h1>Opposition Carte</h1>
+</div>
+<form #CarteForm="ngForm" nz-form [formGroup]="validateForm" class="ant-advanced-search-form">
+    <div nz-row [nzGutter]="24">
+        <div nz-col [nzSpan]="7">
+            <nz-form-item>
+                <nz-form-label nzRequired>Compte</nz-form-label>
+                <nz-form-control>
+                    <nz-select name="select-validate" [ngModelOptions]="{standalone: true}">
+                        <nz-option nzValue="Barre" nzLabel="Barré"></nz-option>
+                        <nz-option nzValue="Non barre" nzLabel="Non barré"></nz-option>
+                    </nz-select>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="7">
+            <nz-form-item>
+                <nz-form-label nzRequired>Type Carte</nz-form-label>
+                <nz-form-control>
+                    <nz-select name="select-validate" [ngModelOptions]="{standalone: true}">
+                        <nz-option nzValue="Etoile" nzLabel="Etoile"></nz-option>
+                        <nz-option nzValue="Platinium" nzLabel="Platinium"></nz-option>
+                        <nz-option nzValue="VEGA" nzLabel="VEGA"></nz-option>
+                        <nz-option nzValue="visa Classic" nzLabel="visa Classic"></nz-option>
+                        <nz-option nzValue="visa Prépayé Electron" nzLabel="visa Prépayé Electron"></nz-option>
+                        <nz-option nzValue="visa Gold" nzLabel="visa Gold"></nz-option>
+
+                    </nz-select>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+
+        <div nz-col [nzSpan]="4">
+            <nz-form-item>
+                <nz-form-control nzErrorTip="Veuilez saisir un chiffre!">
+                  <input type="text" nz-input id="objet" formControlName="objet" placeholder="6 premiers chiffres"   />
+                </nz-form-control>
+              </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="4">
+            <nz-form-item>
+                <nz-form-control nzErrorTip="Veuilez saisir un chiffre!">
+                  <input type="text" nz-input id="objet" formControlName="objet" placeholder="4 derniers chiffres"   />
+                </nz-form-control>
+              </nz-form-item>
+        </div>
+
+
+    </div>
+    <div nz-row [nzGutter]="24">
+        <div nz-col [nzSpan]="12">
+            <nz-form-item>
+
+                <nz-form-label nzFor="" nzRequired>
+                    <span>Motif</span>
+                </nz-form-label>
+                <nz-form-control nzErrorTip="Entrez votre prénom !">
+                    <textarea rows="4" nz-input [(ngModel)]="inputValue"></textarea>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+
+
+    <div nz-row>
+        <div nz-col [nzSpan]="24" class="search-area">
+            <button nz-button [nzType]="'primary'" (click)="onSubmit()">Confirmer</button>
+            <button nz-button (click)="resetForm()">réinitialiser</button>
+            <a class="collapse" (click)="toggleCollapse()">
+                Collapse
+                <i nz-icon [nzType]="isCollapse ? 'down' : 'up'"></i>
+            </a>
+        </div>
+    </div>
+
+</form>

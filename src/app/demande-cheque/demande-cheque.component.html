@@ -1,0 +1,79 @@
+<div class="d-flex page__box p-3 mt-3">
+    <h1>Demande de chéquiers</h1>
+</div>
+<form #ChequeForm="ngForm" nz-form [formGroup]="validateForm" class="ant-advanced-search-form">
+    <div nz-row [nzGutter]="24">
+        <div nz-col [nzSpan]="8">
+            <nz-form-item>
+                <nz-form-label nzRequired>Compte</nz-form-label>
+                <nz-form-control>
+                    <nz-select name="select-validate" [ngModelOptions]="{standalone: true}">
+                        <nz-option nzValue="Barre" nzLabel="Barré"></nz-option>
+                        <nz-option nzValue="Non barre" nzLabel="Non barré"></nz-option>
+                    </nz-select>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+
+        <div nz-col [nzSpan]="4">
+            <nz-form-item>
+                <nz-form-label nzRequired>Barré</nz-form-label>
+                <nz-form-control>
+                    <nz-select name="select-validate" [ngModelOptions]="{standalone: true}">
+                        <nz-option nzValue="Barre" nzLabel="Barre"></nz-option>
+                        <nz-option nzValue="Non barre" nzLabel="Non barre"></nz-option>
+                    </nz-select>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="6">
+            <nz-form-item>
+                <nz-form-label nzRequired>Type Chéquier</nz-form-label>
+                <nz-form-control>
+                    <nz-select name="select-validate" [ngModelOptions]="{standalone: true}">
+                        <nz-option nzValue="25" nzLabel="25"></nz-option>
+                        <nz-option nzValue="50" nzLabel="50"></nz-option>
+                        <nz-option nzValue="75" nzLabel="75"></nz-option>
+
+                    </nz-select>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="6">
+            <nz-form-item>
+                <nz-form-label nzFor="" nzRequired>
+                    <span>Nb.chèquier</span>
+                </nz-form-label>
+                <nz-form-control nzErrorTip="Entrez votre prénom !">
+                    <input nz-input id="nbChequier" formControlName="nbChequier" />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+
+    </div>
+    <div nz-row [nzGutter]="24">
+        <div nz-col [nzSpan]="12">
+            <nz-form-item>
+
+                <nz-form-label nzFor="" nzRequired>
+                    <span>Raison</span>
+                </nz-form-label>
+                <nz-form-control nzErrorTip="Entrez votre prénom !">
+                    <textarea rows="4" nz-input [(ngModel)]="inputValue"></textarea>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+
+    <div nz-row>
+        <div nz-col [nzSpan]="24" class="search-area">
+            <button nz-button [nzType]="'primary'" (click)="onSubmit()">Confirmer</button>
+            <button nz-button (click)="resetForm()">réinitialiser</button>
+            <a class="collapse" (click)="toggleCollapse()">
+                Collapse
+                <i nz-icon [nzType]="isCollapse ? 'down' : 'up'"></i>
+            </a>
+        </div>
+    </div>
+
+</form>

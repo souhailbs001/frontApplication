@@ -1,0 +1,33 @@
+<div class="d-flex page__box p-3 mt-3">
+  <h1>Liste des devises</h1>
+</div>
+<nz-table #nzTable  nzTableLayout="fixed">
+  <thead>
+    <tr>
+      <th nzCustomFilter>
+        Identifiant
+        <nz-filter-trigger [(nzVisible)]="visible" [nzActive]="searchValue.length > 0" [nzDropdownMenu]="menu">
+          <i nz-icon nzType="search"></i>
+        </nz-filter-trigger>
+      </th>
+      <th>Symbole</th>
+      <th>Nom complet</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let currency of currencies">
+      <td>{{ currency.cc }}</td>
+      <td>{{ currency.symbol }}</td>
+      <td>{{ currency.name }}</td>
+    </tr>
+  </tbody>
+</nz-table>
+<nz-dropdown-menu #menu="nzDropdownMenu">
+  <div class="ant-table-filter-dropdown">
+    <div class="search-box">
+      <input type="text" nz-input placeholder="Search name" [(ngModel)]="searchValue" />
+      <button nz-button nzSize="small" nzType="primary" (click)="search()" class="search-button">Search</button>
+      <button nz-button nzSize="small" (click)="reset()">Reset</button>
+    </div>
+  </div>
+</nz-dropdown-menu>

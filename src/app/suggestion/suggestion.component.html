@@ -1,0 +1,43 @@
+<div class="d-flex page__box p-3 mt-3">
+    <h1>Suggestion</h1>
+</div>
+
+<form #SuggestionForm="ngForm" nz-form [formGroup]="validateForm" class="ant-advanced-search-form">
+    <div nz-row [nzGutter]="24">
+        <div nz-col [nzSpan]="8">
+            <nz-form-item>
+                <nz-form-label nzRequired>Objet</nz-form-label>
+                <nz-form-control>
+                    <nz-select name="select-validate" [ngModelOptions]="{standalone: true}">
+                        <nz-option nzValue="incident1" nzLabel="Objet1"></nz-option>
+                        <nz-option nzValue="incident2" nzLabel="Objet2"></nz-option>
+                    </nz-select>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+
+        
+        <div nz-col [nzSpan]="12">
+            <nz-form-item>
+                <nz-form-label nzFor="" nzRequired>
+                    <span>Commentaire</span>
+                </nz-form-label>
+                <nz-form-control nzErrorTip="Entrez votre prénom !">
+                    <textarea rows="4" nz-input [(ngModel)]="inputValue"></textarea>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+
+    <div nz-row>
+        <div nz-col [nzSpan]="24" class="search-area">
+            <button nz-button [nzType]="'primary'" (click)="onSubmit()">Confirmer</button>
+            <button nz-button (click)="resetForm()">réinitialiser</button>
+            <a class="collapse" (click)="toggleCollapse()">
+                Collapse
+                <i nz-icon [nzType]="isCollapse ? 'down' : 'up'"></i>
+            </a>
+        </div>
+    </div>
+
+</form>

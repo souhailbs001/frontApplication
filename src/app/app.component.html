@@ -1,0 +1,10 @@
+
+<app-sidenav *ngIf="userService.roleMatch(['chef_agence_role'])"></app-sidenav>
+<nz-layout>
+<app-header *ngIf="userService.roleMatch(['responsable_clientele_role'])"></app-header>
+<nz-content class="inner-content">
+  <router-outlet></router-outlet>
+</nz-content>
+<nz-footer *ngIf="userAuthService.isLoggedIn()"> <img src="../assets/bfi_logo-removebg-preview.png" alt="logo">© BFI
+  Groupe 2022 </nz-footer>
+</nz-layout>

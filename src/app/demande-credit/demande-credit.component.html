@@ -1,0 +1,117 @@
+<div class="d-flex page__box p-3 mt-3">
+    <h1>Demande de crédit</h1>
+</div>
+<div class="container">
+    <form #creditForm="ngForm" nz-form [formGroup]="validateForm" (ngSubmit)="creditForm"
+        class="ant-advanced-search-form">
+        <div nz-row [nzGutter]="24">
+            <div nz-col [nzSpan]="8">
+                <nz-form-item>
+                    <nz-form-label>Emprunt</nz-form-label>
+                    <nz-form-control>
+                        <nz-input-group nzSuffix="XAF" nzPrefix="">
+                            <input type="text" formControlName="emprunt" nz-input
+                                [(ngModel)]="creditInteretConstant.emprunt" />
+                        </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col [nzSpan]="8">
+                <nz-form-item>
+                    <nz-form-label>Valeur du véhicule</nz-form-label>
+                    <nz-form-control>
+                        <nz-input-group nzSuffix="XAF" nzPrefix="$">
+                            <input type="text" formControlName="valeurVehicule" nz-input />
+                        </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col [nzSpan]="8">
+                <nz-form-item>
+                    <nz-form-label>Autofinancement</nz-form-label>
+                    <nz-form-control>
+                        <nz-input-group nzSuffix="XAF" nzPrefix="$">
+                            <input type="text" formControlName="autofinancement" nz-input />
+                        </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+        </div>
+
+        <div nz-row [nzGutter]="24">
+            <div nz-col [nzSpan]="8">
+                <nz-form-item>
+                    <nz-form-label>Durée du remboursement</nz-form-label>
+                    <nz-form-control>
+                        <nz-select formControlName="dureeRemboursement" name="duree" class="dureeDropDown"
+                            [nzPlaceholder]="'Durée'" [(ngModel)]="creditInteretConstant.duree">
+                            <nz-option nzLabel="5 ans" nzValue="5"></nz-option>
+                            <nz-option nzLabel="7 ans" nzValue="7"></nz-option>
+                        </nz-select>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col [nzSpan]="8">
+                <nz-form-item>
+                    <nz-form-label>Taux d'intéret</nz-form-label>
+                    <nz-form-control>
+                        <nz-input-number [nzMin]="1" [nzMax]="100" [nzStep]="1" [nzFormatter]="formatterPercent"
+                            formControlName="tauxInteret" [nzParser]="parserPercent" 
+                            [(ngModel)]="creditInteretConstant.tauxInteret"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+
+        </div>
+        <div nz-row>
+            <div nz-col [nzSpan]="24" class="search-area">
+                <button nz-button [nzType]="'primary'" (click)="simulerDemandeCredit()">Simuler un tableau d'amortissement</button>
+                <button nz-button (click)="resetForm()">réinitialiser</button>
+                <a class="collapse" (click)="toggleCollapse()">
+                    Collapse
+                    <i nz-icon [nzType]="isCollapse ? 'down' : 'up'"></i>
+                </a>
+            </div>
+        </div>
+    </form>
+    <div class="search-result-list">
+        <div class="  shadow p-3 position-relative">
+            <div>
+                <h6>Tableau d'amortissement <button (click)="makePDF()" title="Imprimer" type="submit" class="btn btn-outline-danger glow-on-hover">
+                    Export  <fa-icon [icon]="faFilePdf"></fa-icon>
+                </button></h6>
+                
+            </div>
+            <div id="middleTable" #middleTable>
+            <nz-table  #middleTable nzSize="small" [nzData]="data" style="overflow-y: scroll;max-height: 250px">
+                <thead>
+                    <tr>
+                        <th>Années</th>
+                        <th>Capital restant dû</th>
+                        <th>Intérêt</th>
+                        <th>Amortissement du capital</th>
+                        <th>Annuités</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let c of creditInteretConstant.amortissementConstants">
+                        <td>{{ 1 }}</td>
+                        <td>{{ c.crd  | number: '1.0-3'}} XAF</td>
+                        <td>{{ c.valeurInteret | number: '1.0-3'}} XAF</td>
+                        <td>{{ c.amortissement | number: '1.0-3'}} XAF</td>
+                        <td>{{ c.annuites | number: '1.0-3'}} XAF</td>
+
+                    </tr>
+                </tbody>
+                
+            </nz-table>
+        </div>
+            <div #demandeCreditButton nz-col [nzSpan]="24" class="search-area">
+                <button nz-button [nzType]="'primary'" (click)="envoyerDemandeCredit()">Envoyer la demande de crédit</button>
+            </div>
+            
+        </div>
+       
+    </div>
+</div>
